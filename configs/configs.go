@@ -18,6 +18,7 @@ func Load() *Config {
 	}
 	viper.AutomaticEnv()
 	viper.SetDefault("SERVER_PORT", ":8100")
+	BindAllKeys()
 	var c Config
 	if err := viper.Unmarshal(&c); err != nil {
 		panic(err)

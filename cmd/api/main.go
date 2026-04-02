@@ -5,6 +5,7 @@ import (
 	"media/backend/configs"
 	"media/backend/internal/infra/db"
 	"media/backend/internal/pkg/logger"
+	"net/http"
 )
 
 func main() {
@@ -18,5 +19,6 @@ func main() {
 	defer pool.Close()
 	//r := router.NewRouter(pool)
 	logger.Info("Server started on port %s", cfg.ServerPort)
+	http.ListenAndServe(cfg.ServerPort, nil)
 
 }
