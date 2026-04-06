@@ -1,3 +1,5 @@
+-- +goose Up
+-- +goose StatementBegin
 create extension if not exists "pgcrypto";
 
 create table users
@@ -118,3 +120,19 @@ create index idx_productions_venue_id
 
 create index idx_shows_title
     on shows (title);
+
+-- +goose StatementEnd
+
+-- +goose Down
+-- +goose StatementBegin
+drop table if exists post_likes;
+drop table if exists review_likes;
+drop table if exists user_follows;
+drop table if exists posts;
+drop table if exists reviews;
+drop table if exists productions;
+drop table if exists shows;
+drop table if exists venues;
+drop table if exists users;
+drop extension if exists "pgcrypto";
+-- +goose StatementEnd

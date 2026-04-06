@@ -18,6 +18,9 @@ func main() {
 	}
 	defer pool.Close()
 	//r := router.NewRouter(pool)
+	if err := db.RunMigrations(ctx, pool); err != nil {
+		logger.Fatal("Failed to run migrations: %v", err)
+	}
 	logger.Info("Server started on port %s", cfg.ServerPort)
 	http.ListenAndServe(cfg.ServerPort, nil)
 

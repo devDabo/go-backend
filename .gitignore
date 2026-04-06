@@ -28,5 +28,5 @@ go.work.sum
 cmd/api/.env
 
 # Editor/IDE
-# .idea/
+ .idea/
 # .vscode/
