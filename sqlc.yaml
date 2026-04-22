@@ -1,0 +1,14 @@
+version: "2"
+sql:
+  - schema: "sql/migrations"
+    queries: "sql/queries"
+    engine: "postgresql"
+    gen:
+      go:
+        package: "sqlc"
+        out: "internal/pkg/database/sqlc"
+        sql_package: "pgx/v5"
+#    database:
+#      managed: true
+#    rules:
+#      - sqlc/db-prepare

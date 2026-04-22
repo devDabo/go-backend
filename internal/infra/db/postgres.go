@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"media/backend/configs"
+	"media/backend/internal/pkg/database/sqlc"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -26,4 +27,8 @@ func NewPostgresPool(ctx context.Context, cfg *configs.Config) (*pgxpool.Pool, e
 	}
 
 	return pool, nil
+}
+
+func NewQueries(pool *pgxpool.Pool) *sqlc.Queries {
+	return sqlc.New(pool)
 }
